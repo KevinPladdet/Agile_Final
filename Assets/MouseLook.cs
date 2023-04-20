@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    public GameObject Player;
+
     public float Sensitivity
     {
         get { return sensitivity; }
@@ -27,4 +29,9 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = xQuat * yQuat; //queternion is blijkbaar meer consistant dan euler...
     }
+    public Vector2 GetRotation()
+    {
+        return rotation;
+    }
+
 }
