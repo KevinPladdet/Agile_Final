@@ -22,17 +22,15 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+        // Change controls when necessary. Currently it's RMB.
         if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
             StartCoroutine(Dash());
-        }
-        Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow);
+
+        Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow); // Shows line forward in scene view.
 
         // For debugging purposes, remove when finished.
         if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
             transform.position = new Vector3(-4, 1.04f, 0);
-        }
     }
 
     // Dash is a coroutine, meaning it runs alongside other code in the Update functions.
@@ -62,6 +60,7 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    // Returns exact Vector3 of the dash's end point.
     private Vector3 GetDashLocation()
     {
         RaycastHit hit;
@@ -70,7 +69,7 @@ public class PlayerDash : MonoBehaviour
         if (Physics.Raycast(dashPoint.position, dashPoint.transform.forward, out hit, dashDistance))
         {
             Debug.Log("Raycast Hit");
-            return new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.forward * 0.5f;
+            return new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.forward * 0.5f; // goes backwards by .5 to not clip into walls.
         }
         else
         {
