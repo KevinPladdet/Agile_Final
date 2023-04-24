@@ -21,6 +21,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        Cursor.lockState = CursorLockMode.Locked;
 
         currentX += Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
         currentY += Input.GetAxis("Mouse Y") * -sensivity * Time.deltaTime;
