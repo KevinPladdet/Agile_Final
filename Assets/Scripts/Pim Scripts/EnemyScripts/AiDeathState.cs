@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AiDeathState : AiState
 {
@@ -22,5 +23,6 @@ public class AiDeathState : AiState
     public void Update(AiAgent agent)
     {
         //update
+        agent.transform.position = new Vector3(3, 3, 3);   //agent = the enemy     
     }
 }

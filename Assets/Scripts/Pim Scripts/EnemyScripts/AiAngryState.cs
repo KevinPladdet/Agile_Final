@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiChasePlayerState : AiState
+public class AiAngryState : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public AiStateId GetId()
     {
-        
+        return AiStateId.AngryState;
+    }
+    public void Enter(AiAgent agent)
+    {
+        //start function(when ai enters the state)
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
-        
+        //gets executed when ai leaves this state
+    }
+
+    public void Update(AiAgent agent)
+    {
+        //code that ai does each frame in this state here
     }
 }
