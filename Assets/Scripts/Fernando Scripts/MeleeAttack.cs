@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
+    public GameObject enemy;
+    private bool onEnemy;
 
-    
     void Start()
     {
         
@@ -14,13 +15,33 @@ public class MeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy == true)
+        {
+            SmallAttack();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKey(KeyCode.Mouse0) && gameObject.CompareTag("Enemy"))
-        {
-
-        }
+        //Check if enemy is in range
+        onEnemy = true;
+        //Debug.Log(onEnemy);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        //Check if enemy is in range
+        onEnemy = false;
+        //Debug.Log(onEnemy);
+    }
+    void SmallAttack()
+    {
+        enemy.GetComponent<Damage>().TakeDamage();
+    }
+    void BigAttack()
+    {
+        
+    }
+    void SneakAttack()
+    {
+        
     }
 }
