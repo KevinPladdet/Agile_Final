@@ -20,6 +20,9 @@ public class PlayerDash : MonoBehaviour
 
     [SerializeField] private AnimationCurve dashCurve;
 
+    [SerializeField] private ParticleSystem dashParticles;
+    [SerializeField] private ParticleSystem speedParticles;
+
     void Update()
     {
         // Change controls when necessary. Currently it's RMB.
@@ -43,6 +46,10 @@ public class PlayerDash : MonoBehaviour
             yield return null;
         } else
         {
+            // dashParticles.Play();
+
+            speedParticles.Play();
+            
             startPosition = transform.position;
             endPosition = GetDashLocation();
             timeElapsed = 0;
