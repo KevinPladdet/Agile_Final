@@ -69,9 +69,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void GetInput()
     {
-        float camXRotation = mouseLook.GetRotation().x;
-        Quaternion camRotation = Quaternion.Euler(0, camXRotation, 0);
-        direction = camRotation * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
     }
 
 
@@ -106,4 +104,8 @@ public class PlayerMovement : MonoBehaviour
     #endregion jump
 
     #endregion Movement Methods
+
+    void TurnPlayer()
+    {
+    }
 }
