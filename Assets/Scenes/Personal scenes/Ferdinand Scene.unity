@@ -1026,9 +1026,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c70a7b7680ef6429369742335b8b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAt: {fileID: 0}
   Player: {fileID: 3930961925346519112}
-  sensitivity: 9
-  yRotationLimit: 88
+  distance: 10
+  sensivity: 4
+  sideOffSet: 0
 --- !u!1 &3930961925346519112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,8 +1044,6 @@ GameObject:
   - component: {fileID: 3930961925346519124}
   - component: {fileID: 3930961925346519115}
   - component: {fileID: 3930961925346519114}
-  - component: {fileID: 3930961925346519127}
-  - component: {fileID: 3930961925346519128}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1147,40 +1147,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3930961925346519127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3930961925346519112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dddf5fb351ea8549be02cb974c09c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseLook: {fileID: 3930961924253430518}
-  movementEnabled: 1
-  movementSpeed: 3
-  jumpForce: 2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &3930961925346519128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3930961925346519112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeef2037f8616294393af75eb2af2dba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickableLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  playerCameraTransform: {fileID: 3930961924253430516}
-  pickUpUI: {fileID: 2075951982}
-  hitRange: 3
