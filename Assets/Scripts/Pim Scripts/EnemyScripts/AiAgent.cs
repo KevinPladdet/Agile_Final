@@ -11,7 +11,13 @@ public class AiAgent : MonoBehaviour
     {
         statemachine = new enemyStateController(this);
         statemachine.ChangeState(initialState);
+
+        statemachine.RegisterState(new IdleState());
+
+        statemachine.RegisterState(new AlertState());
+
         statemachine.RegisterState(new AiAngryState());
+
         statemachine.RegisterState(new AiDeathState());
     }
 

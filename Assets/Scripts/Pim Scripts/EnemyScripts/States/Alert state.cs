@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiAngryState : AiState
+public class AlertState : AiState
 {
     public AiStateId GetId()
     {
-        return AiStateId.AngryState;
+        return AiStateId.AlertState;
     }
     public void Enter(AiAgent agent)
     {
@@ -21,5 +21,13 @@ public class AiAngryState : AiState
     public void Update(AiAgent agent)
     {
         //code that ai does each frame in this state here
+    }
+
+    public void OnTriggerEnter()
+    {
+    }
+
+    public void OnCollisionEnter(AiAgent agent)
+    {
     }
 }

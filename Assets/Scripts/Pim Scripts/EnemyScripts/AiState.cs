@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -16,4 +17,6 @@ public interface AiState
     void Enter(AiAgent agent);
     void Update(AiAgent agent);
     void Exit(AiAgent agent);
+    void OnCollisionEnter(AiAgent agent);
+    void OnTriggerEnter();
 }

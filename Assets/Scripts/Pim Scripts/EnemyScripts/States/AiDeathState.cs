@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
+
 public class AiDeathState : AiState
 {
     public AiStateId GetId()
@@ -24,5 +25,14 @@ public class AiDeathState : AiState
     {
         //update
         agent.transform.position = new Vector3(3, 3, 3);   //agent = the enemy     
+    }
+
+    public void OnTriggerEnter()
+    {
+    }
+
+    public void OnCollisionEnter(AiAgent agent)
+    {
+        
     }
 }
