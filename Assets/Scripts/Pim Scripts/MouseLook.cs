@@ -4,34 +4,37 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public GameObject Player;
 
-    public float Sensitivity
+    private const float YMin = -50.0f;
+    private const float YMax = 50.0f;
+
+    public Transform lookAt;
+
+    public Transform Player;
+
+    public float distance = 10.0f;
+    private float currentX = 0.0f;
+    private float currentY = 0.0f;
+    public float sensivity = 4.0f;
+    public float sideOffSet;
+
+    // Update is called once per frame
+    void LateUpdate()
     {
-        get { return sensitivity; }
-        set { sensitivity = value; }
+        Cursor.lockState = CursorLockMode.Locked;
+
+        currentX += Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
+        currentY += Input.GetAxis("Mouse Y") * -sensivity * Time.deltaTime;
+
+        currentY = Mathf.Clamp(currentY, YMin, YMax);
+
+        Vector3 Direction = new Vector3(0, 0, -distance);
+        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
+        transform.position = lookAt.position + rotation * Direction;
+
+        transform.LookAt(lookAt.position);
+
+        Player.rotation = Quaternion.Euler(0, currentX, 0);
+
     }
-    [Range(0.1f, 20f)][SerializeField] float sensitivity = 9f;
-    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
-    [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
-
-    Vector2 rotation = Vector2.zero;
-    const string xAxis = "Mouse X"; 
-    const string yAxis = "Mouse Y";
-
-    void Update()
-    {
-        rotation.x += Input.GetAxis(xAxis) * sensitivity;
-        rotation.y += Input.GetAxis(yAxis) * sensitivity;
-        rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
-        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
-        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
-
-        transform.localRotation = xQuat * yQuat; //queternion is blijkbaar meer consistant dan euler...
-    }
-    public Vector2 GetRotation()
-    {
-        return rotation;
-    }
-
 }
