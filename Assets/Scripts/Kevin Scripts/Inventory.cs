@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        IEnumerator Waiting(float duration)
+        IEnumerator Waiting(float duration) // This code needs a waiting system, otherwise it switches weapons multiple times in the same frame
         {
             DoneWaiting = false;
             yield return new WaitForSeconds(duration);

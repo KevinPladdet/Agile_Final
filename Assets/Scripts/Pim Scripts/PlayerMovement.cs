@@ -105,7 +105,4 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion Movement Methods
 
-    void TurnPlayer()
-    {
-    }
 }

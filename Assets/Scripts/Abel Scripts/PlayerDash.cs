@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
@@ -18,41 +20,68 @@ public class PlayerDash : MonoBehaviour
 
     [SerializeField] private AnimationCurve dashCurve;
 
+    [SerializeField] private ParticleSystem dashParticles;
+    [SerializeField] private ParticleSystem speedParticles;
+
     void Update()
     {
+        // Change controls when necessary. Currently it's RMB.
         if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
             StartCoroutine(Dash());
-        }
+
+        Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow); // Shows line forward in scene view.
+
+        // For debugging purposes, remove when finished.
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            transform.position = new Vector3(-4, 1.04f, 0);
     }
 
     // Dash is a coroutine, meaning it runs alongside other code in the Update functions.
     // This lets it act on its AnimationCurve without interfering with other code.
     private IEnumerator Dash()
     {
-        RaycastHit hit;
-
-        // WIP: if something is within a certain distance of dashPoint, set endPosition to hit. If not, use end of distance.
-        if (Physics.Raycast(dashPoint.position, dashPoint.transform.TransformDirection(Vector3.forward), out hit))
+        if (Physics.OverlapBox(dashPoint.position, dashPoint.localScale / 2, dashPoint.rotation).Length > 1)
         {
-            endPosition = hit.point;
+            Debug.Log("Box has been overlapped, no Dash available");
+            yield return null;
         } else
         {
-        }
+            // dashParticles.Play();
 
+            speedParticles.Play();
+            
             startPosition = transform.position;
-        endPosition = new Vector3(transform.position.x + dashDistance, transform.position.y, transform.position.z); // CHANGE TO RAYCAST!
-        timeElapsed = 0;
+            endPosition = GetDashLocation();
+            timeElapsed = 0;
 
-        while (timeElapsed < dashTime)
+            while (timeElapsed < dashTime)
+            {
+                timeElapsed += Time.deltaTime; // sets time elapsed in seconds
+                float percentageComplete = timeElapsed / dashTime; // gets a decimal number between 0 - 1
+
+                // Lerp interpolates the movement between both positions linearly,
+                // but adding the Dash AnimationCurve makes it more smooth.
+                transform.position = Vector3.Lerp(startPosition, endPosition, dashCurve.Evaluate(percentageComplete));
+                yield return new WaitForEndOfFrame(); // makes sure the while-loop runs at the same speed as Update.
+            }
+        }
+    }
+
+    // Returns exact Vector3 of the dash's end point.
+    private Vector3 GetDashLocation()
+    {
+        RaycastHit hit;
+
+        // if something is within a certain distance of dashPoint, set endPosition to hit. If not, use end of distance.
+        if (Physics.Raycast(dashPoint.position, dashPoint.transform.forward, out hit, dashDistance))
         {
-            timeElapsed += Time.deltaTime; // sets time elapsed in seconds
-            float percentageComplete = timeElapsed / dashTime; // gets a decimal number between 0 - 1
-
-            // Lerp interpolates the movement between both positions linearly,
-            // but by adding the Dash AnimationCurve it seems more smooth.
-            transform.position = Vector3.Lerp(startPosition, endPosition, dashCurve.Evaluate(percentageComplete));
-            yield return new WaitForEndOfFrame(); // makes sure the while-loop runs at the same speed as Update.
+            Debug.Log("Raycast Hit");
+            return new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.forward * 0.5f; // goes backwards by .5 to not clip into walls.
+        }
+        else
+        {
+            Debug.Log("Raycast no hit");
+            return transform.position + transform.forward * dashDistance; // return forward + dashDistance
         }
     }
 }
