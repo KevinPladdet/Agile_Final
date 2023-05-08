@@ -1,0 +1,11 @@
+Model Information:
+* title:	Broken Bridge
+* source:	https://sketchfab.com/3d-models/broken-bridge-77326c45609b48c687ac76c611406c25
+* author:	CollinPatrick (https://sketchfab.com/CollinPatrick)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Broken Bridge" (https://sketchfab.com/3d-models/broken-bridge-77326c45609b48c687ac76c611406c25) by CollinPatrick (https://sketchfab.com/CollinPatrick) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
