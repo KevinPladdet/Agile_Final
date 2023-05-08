@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMovement : MonoBehaviour
+public class MoveAnimation : MonoBehaviour
 {
-	private float speed = 2.0f;
 	public GameObject character;
 	public Animator anim;
 
@@ -18,7 +17,6 @@ public class TestMovement : MonoBehaviour
 			anim.SetBool("Back", false);
 			anim.SetBool("Left", false);
 			anim.SetBool("Right", false);
-			transform.position += Vector3.forward * speed * Time.deltaTime;
 		}
 		if (Input.GetKey("a"))
 		{
@@ -28,7 +26,6 @@ public class TestMovement : MonoBehaviour
 			anim.SetBool("Foreward", false);
 			anim.SetBool("Back", false);
 			anim.SetBool("Right", false);
-			transform.position += Vector3.left * speed * Time.deltaTime;
 		}
 		if (Input.GetKey("s"))
 		{
@@ -38,8 +35,6 @@ public class TestMovement : MonoBehaviour
 			anim.SetBool("Foreward", false);
 			anim.SetBool("Left", false);
 			anim.SetBool("Right", false);
-
-			transform.position += Vector3.back * speed * Time.deltaTime;
 		}
 		if (Input.GetKey("d"))
 		{
@@ -49,7 +44,6 @@ public class TestMovement : MonoBehaviour
 			anim.SetBool("Foreward", false);
 			anim.SetBool("Back", false);
 			anim.SetBool("Left", false);
-			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
 		if (Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.S) == false && Input.GetKey(KeyCode.D) == false)
 		{
@@ -62,4 +56,3 @@ public class TestMovement : MonoBehaviour
 		}
 	}
 }
-			
