@@ -962,9 +962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cddb144d53f89418c390a12260718d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   playerRB: {fileID: 1524058866}
+  health: 100
   thrust: 5
+  hit: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!4 &1435772981 stripped
 Transform:

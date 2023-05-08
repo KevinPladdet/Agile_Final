@@ -6,14 +6,16 @@ using UnityEngine.EventSystems;
 
 public class Damage : MonoBehaviour
 {
-    public int health = 10;
     private Rigidbody rb;
     public Rigidbody playerRB;
+
+    public int health = 10;
+
     public float thrust;
 
-    public Vector3 direction;
-    
+    public bool hit;
 
+    public Vector3 direction;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,13 +29,16 @@ public class Damage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log(hit);
     }
     //When hit take damage
     public void TakeDamage()
     {
+        hit = true;
         Debug.Log("Damaged");
         KnockBack();
         health--;
+        
     }
     public void TakeDamage2()
     {
@@ -43,20 +48,9 @@ public class Damage : MonoBehaviour
     }
     public void KnockBack()
     {
+        Debug.Log("KnockBack");
         rb.velocity = Vector3.zero;
-        rb.AddForce( direction.normalized * -thrust, ForceMode.Impulse);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (gameObject.CompareTag("Melee"))
-        {
-            Debug.Log("KnockBack");
-            direction = other.transform.position - transform.position;
-            KnockBack();
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        
+        direction = playerRB.transform.position - transform.position;
+        rb.AddForce(direction.normalized * -thrust, ForceMode.Impulse);
     }
 }
