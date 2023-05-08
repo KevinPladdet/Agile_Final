@@ -31,7 +31,7 @@ public class AiAngryState : AiState
     }
     public void OnTriggerEnter(AiAgent agent)
     {
-        Debug.Log(";oajfh;aldjha'dlgjha'sdgjha ;oguhad fk");
+        Debug.Log("Trigger");
         hp -= 1;
     }
     void die(AiAgent agent)
