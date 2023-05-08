@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Damage : MonoBehaviour
 {
     public int health = 10;
-    public Rigidbody rb;
+    private Rigidbody rb;
+    public Rigidbody playerRB;
     public float thrust;
-    //KnockBack
+
+    public Vector3 direction;
     
 
     void Start()
@@ -32,8 +35,28 @@ public class Damage : MonoBehaviour
         KnockBack();
         health--;
     }
+    public void TakeDamage2()
+    {
+        Debug.Log("Damaged2");
+        KnockBack();
+        health -= 2;
+    }
     public void KnockBack()
     {
-        rb.AddForce(transform.forward * -thrust);
+        rb.velocity = Vector3.zero;
+        rb.AddForce( direction.normalized * -thrust, ForceMode.Impulse);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (gameObject.CompareTag("Melee"))
+        {
+            Debug.Log("KnockBack");
+            direction = other.transform.position - transform.position;
+            KnockBack();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }
