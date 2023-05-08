@@ -13,8 +13,6 @@ public class Damage : MonoBehaviour
 
     public float thrust;
 
-    public bool hit;
-
     public Vector3 direction;
     void Start()
     {
@@ -29,12 +27,11 @@ public class Damage : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(hit);
+        //Debug.Log(hit);
     }
     //When hit take damage
     public void TakeDamage()
     {
-        hit = true;
         Debug.Log("Damaged");
         KnockBack();
         health--;
