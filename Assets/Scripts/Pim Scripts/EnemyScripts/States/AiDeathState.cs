@@ -27,7 +27,7 @@ public class AiDeathState : AiState
         agent.transform.position = new Vector3(3, 3, 3);   //agent = the enemy     
     }
 
-    public void OnTriggerEnter()
+    public void OnTriggerEnter(AiAgent agent)
     {
     }
 

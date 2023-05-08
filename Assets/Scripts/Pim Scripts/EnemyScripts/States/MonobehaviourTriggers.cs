@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonobehaviourTriggers : MonoBehaviour
 {
-    public AiState aiState;
+    public AiAgent aiAgent;
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        aiAgent?.statemachine?.OnCollisionEnter(collision);
+    }
     private void OnTriggerEnter(Collider other)
     {
-        // Call the OnTriggerEnter method in the AiAngryState instance
-        aiState.OnTriggerEnter();
+        aiAgent?.statemachine?.OnTriggerEnter(other);
     }
-
 }

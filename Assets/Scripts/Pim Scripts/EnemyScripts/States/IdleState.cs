@@ -23,7 +23,7 @@ public class IdleState : AiState
         //code that ai does each frame in this state here
     }
 
-    public void OnTriggerEnter()
+    public void OnTriggerEnter(AiAgent agent)
     {
     }
 

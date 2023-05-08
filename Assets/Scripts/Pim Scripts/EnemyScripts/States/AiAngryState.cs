@@ -29,7 +29,7 @@ public class AiAngryState : AiState
         }
 
     }
-    public void OnTriggerEnter()
+    public void OnTriggerEnter(AiAgent agent)
     {
         Debug.Log(";oajfh;aldjha'dlgjha'sdgjha ;oguhad fk");
         hp -= 1;
@@ -42,6 +42,6 @@ public class AiAngryState : AiState
 
     public void OnCollisionEnter(AiAgent agent)
     {
-       
+        Debug.Log("Collision");
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public MouseLook mouseLook;
 
     public bool movementEnabled = true;
 
