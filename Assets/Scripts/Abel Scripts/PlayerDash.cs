@@ -30,10 +30,6 @@ public class PlayerDash : MonoBehaviour
             StartCoroutine(Dash());
 
         Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow); // Shows line forward in scene view.
-
-        // For debugging purposes, remove when finished.
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            transform.position = new Vector3(-4, 1.04f, 0);
     }
 
     // Dash is a coroutine, meaning it runs alongside other code in the Update functions.
@@ -42,7 +38,7 @@ public class PlayerDash : MonoBehaviour
     {
         if (Physics.OverlapBox(dashPoint.position, dashPoint.localScale / 2, dashPoint.rotation).Length > 1)
         {
-            Debug.Log("Box has been overlapped, no Dash available");
+            // Debug.Log("Box has been overlapped, no Dash available");
             yield return null;
         } else
         {
@@ -75,12 +71,12 @@ public class PlayerDash : MonoBehaviour
         // if something is within a certain distance of dashPoint, set endPosition to hit. If not, use end of distance.
         if (Physics.Raycast(dashPoint.position, dashPoint.transform.forward, out hit, dashDistance))
         {
-            Debug.Log("Raycast Hit");
+            // Debug.Log("Raycast Hit");
             return new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.forward * 0.5f; // goes backwards by .5 to not clip into walls.
         }
         else
         {
-            Debug.Log("Raycast no hit");
+            // Debug.Log("Raycast no hit");
             return transform.position + transform.forward * dashDistance; // return forward + dashDistance
         }
     }
