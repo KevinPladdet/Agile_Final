@@ -18,5 +18,5 @@ public interface AiState
     void Update(AiAgent agent);
     void Exit(AiAgent agent);
     void OnCollisionEnter(AiAgent agent);
-    void OnTriggerEnter();
+    void OnTriggerEnter(AiAgent agent);
 }

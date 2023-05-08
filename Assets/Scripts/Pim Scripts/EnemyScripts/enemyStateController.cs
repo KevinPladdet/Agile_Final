@@ -69,4 +69,11 @@ public class enemyStateController
         // Call the OnCollisionEnter method of the current state, passing in the agent
         GetState(currentState)?.OnCollisionEnter(agent);
     }
+
+    //Method called when the enemy collides with a collider
+    public void OnTriggerEnter(Collider other)
+    {
+        GetState(currentState)?.OnTriggerEnter(agent);
+    }
 }
+// i used chat gtp to comment this because i forgor
