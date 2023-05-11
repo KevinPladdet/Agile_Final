@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4978876041555018761}
+  - {fileID: 5481435553562683420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,13 +130,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dddf5fb351ea8549be02cb974c09c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLook: {fileID: 0}
+  crouchSpeed: 0
+  crouchHeight: 0
+  crouchkey: 0
   movementEnabled: 1
   movementSpeed: 3
   jumpForce: 2
+  readyToJump: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  isGrounded: 1
+  maxStamina: 0
+  stamina: 0
+  sprintSpeed: 0
+  depletionRate: 0
+  sprintKey: 0
 --- !u!1 &4978876041555018772
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,3 +282,34 @@ MonoBehaviour:
   distance: 3.5
   sensivity: 400
   sideOffSet: 1
+--- !u!1 &9018199789965548781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5481435553562683420}
+  m_Layer: 0
+  m_Name: DashPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5481435553562683420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018199789965548781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.37, z: 12.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4978876040471142059}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
