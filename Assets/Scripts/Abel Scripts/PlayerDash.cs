@@ -14,11 +14,12 @@ public class PlayerDash : MonoBehaviour
     
     private Vector3 endPosition;
     private Vector3 startPosition;
-    public Vector3 resetPosition;
 
     [SerializeField] private float dashDistance;
     [SerializeField] private float dashTime; // in seconds
     private float timeElapsed = 0f;
+    [SerializeField] private float dashCooldown;
+    private bool isAvailable = true;
 
     [Header("Visuals")]
     [SerializeField] private AnimationCurve dashCurve;
@@ -29,7 +30,7 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
         // Change controls when necessary. Currently it's RMB.
-        if (Input.GetKeyDown(dashKey))
+        if (Input.GetKeyDown(dashKey) && isAvailable)
             StartCoroutine(Dash());
 
         Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow); // Shows line forward in scene view.
@@ -39,15 +40,16 @@ public class PlayerDash : MonoBehaviour
     // This lets it act on its AnimationCurve without interfering with other code.
     private IEnumerator Dash()
     {
+        StartCoroutine(DashCooldown(dashCooldown));
         if (Physics.OverlapBox(dashPoint.position, dashPoint.localScale / 2, dashPoint.rotation).Length > 1)
         {
             // Debug.Log("Box has been overlapped, no Dash available");
             yield return null;
         } else
         {
-            // dashParticles.Play();
+            if (dashParticles != null) { dashParticles.Play(); }
 
-            speedParticles.Play();
+            if (speedParticles != null) { speedParticles.Play(); }
             
             startPosition = transform.position;
             endPosition = GetDashLocation();
@@ -82,5 +84,17 @@ public class PlayerDash : MonoBehaviour
             // Debug.Log("Raycast no hit");
             return transform.position + transform.forward * dashDistance; // return forward + dashDistance
         }
+    }
+
+    private IEnumerator DashCooldown(float cooldown)
+    {
+        isAvailable = false;
+        float dashCooldownTime = cooldown;
+        while (dashCooldownTime > 0)
+        {
+            dashCooldownTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame(); // makes sure the while-loop runs at the same speed as Update.
+        }
+        isAvailable = true;
     }
 }
