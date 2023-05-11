@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    public KeyCode dashKey;
+    [Header("DashVars")]
     [SerializeField] private Transform dashPoint;
     
     private Vector3 endPosition;
@@ -18,6 +20,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashTime; // in seconds
     private float timeElapsed = 0f;
 
+    [Header("Visuals")]
     [SerializeField] private AnimationCurve dashCurve;
 
     [SerializeField] private ParticleSystem dashParticles;
@@ -26,7 +29,7 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
         // Change controls when necessary. Currently it's RMB.
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(dashKey))
             StartCoroutine(Dash());
 
         Debug.DrawRay(dashPoint.position, dashPoint.transform.forward, UnityEngine.Color.yellow); // Shows line forward in scene view.
