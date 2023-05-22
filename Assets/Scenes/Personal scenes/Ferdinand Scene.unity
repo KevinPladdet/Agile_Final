@@ -11639,12 +11639,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dddf5fb351ea8549be02cb974c09c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouchSpeed: 0
+  crouchHeight: 0
+  crouchkey: 0
   movementEnabled: 1
   movementSpeed: 1.5
   jumpForce: 2
+  readyToJump: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  isGrounded: 1
+  maxStamina: 0
+  stamina: 0
+  sprintSpeed: 0
+  depletionRate: 0
+  sprintKey: 0
 --- !u!4 &6096259421750007729
 Transform:
   m_ObjectHideFlags: 0
