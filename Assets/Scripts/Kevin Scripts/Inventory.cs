@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public bool HealingActive = true;
     public bool ThrowableActive = false;
     public bool DoneWaiting = true;
+    public bool PlayerGotHealed;
 
     public GameObject HealingItem;
     public GameObject ThrowableItem;
@@ -45,6 +46,7 @@ public class Inventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 // Healing item gets used
+                PlayerGotHealed = true;
                 Debug.Log("Player has been healed");
             }
         }
