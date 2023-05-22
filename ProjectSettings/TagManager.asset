@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Melee
+  - Item
   layers:
   - Default
   - TransparentFX
