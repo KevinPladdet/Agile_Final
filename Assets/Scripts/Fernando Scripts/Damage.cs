@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Damage : MonoBehaviour
 {
-    public int health = 10;
-    public Rigidbody rb;
-    public float thrust;
-    //KnockBack
-    
+    private Rigidbody rb;
+    public Rigidbody playerRB;
 
+    public int health = 10;
+
+    public float thrust;
+
+    public Vector3 direction;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +27,7 @@ public class Damage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //Debug.Log(hit);
     }
     //When hit take damage
     public void TakeDamage()
@@ -31,9 +35,19 @@ public class Damage : MonoBehaviour
         Debug.Log("Damaged");
         KnockBack();
         health--;
+        
+    }
+    public void TakeDamage2()
+    {
+        Debug.Log("Damaged2");
+        KnockBack();
+        health -= 2;
     }
     public void KnockBack()
     {
-        rb.AddForce(transform.forward * -thrust);
+        Debug.Log("KnockBack");
+        rb.velocity = Vector3.zero;
+        direction = playerRB.transform.position - transform.position;
+        rb.AddForce(direction.normalized * -thrust, ForceMode.Impulse);
     }
 }

@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(direction * movementSpeed / multiplier);
             rb.AddForce(direction * movementSpeed * Time.deltaTime * multiplier);
-            Debug.Log("crouch not pressed");
+            //Debug.Log("crouch not pressed");
         }
     }
     void GetInput()
