@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
 	public HealthBar healthBar;
 
-	public inventoryScript invS;
+	//public inventoryScript invS;
 
 	void Start()
 	{
@@ -27,12 +27,12 @@ public class PlayerHealth : MonoBehaviour
 			TakeDamage(20);
 		}
 
-		if (invS.PlayerGotHealed = true)
+		//if (invS.PlayerGotHealed = true)
         {
-			Debug.Log(invS.PlayerGotHealed);
+			//Debug.Log(invS.PlayerGotHealed);
 			Heal();
-			invS.PlayerGotHealed = false;
-			Debug.Log(invS.PlayerGotHealed);
+			//invS.PlayerGotHealed = false;
+			//Debug.Log(invS.PlayerGotHealed);
 		}
 
 		if (currentHealth == 0)
