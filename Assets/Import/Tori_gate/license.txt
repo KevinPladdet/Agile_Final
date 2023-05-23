@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tori gate
+* source:	https://sketchfab.com/3d-models/tori-gate-31c5a095639549df87c7ba1e6cbbd47e
+* author:	sidouw (https://sketchfab.com/sidouw)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tori gate" (https://sketchfab.com/3d-models/tori-gate-31c5a095639549df87c7ba1e6cbbd47e) by sidouw (https://sketchfab.com/sidouw) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
