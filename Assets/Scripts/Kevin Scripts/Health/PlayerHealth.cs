@@ -8,10 +8,11 @@ public class PlayerHealth : MonoBehaviour
 
 	public int maxHealth = 100;
 	public int currentHealth;
+	
+	int amountOfHealing = 3;
 
 	public HealthBar healthBar;
 
-	//public inventoryScript invS;
 
 	void Start()
 	{
@@ -23,22 +24,20 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			//what happens when player gets hit (player can take 5 hits before dying)
-			TakeDamage(20);
+			TakeDamage(20); // Each time the player gets hit he loses 20 health (The player can take 5 hits before dying)
+			// Currently the player takes damage when spacebar is pressed, but the same person who makes the enemies will link this together
 		}
 
-		//if (invS.PlayerGotHealed = true)
-        {
-			//Debug.Log(invS.PlayerGotHealed);
+		if ((GameObject.Find("Main Camera").GetComponent<Inventory>().PlayerGotHealed) && amountOfHealing >=1)
+		{
 			Heal();
-			//invS.PlayerGotHealed = false;
-			//Debug.Log(invS.PlayerGotHealed);
+			amountOfHealing--; // This makes it so that the player can only heal 3 times
+			GameObject.Find("Main Camera").GetComponent<Inventory>().PlayerGotHealed = false;
 		}
 
 		if (currentHealth == 0)
         {
-			//what happens when health reaches 0
-			SceneManager.LoadScene("Death Menu");
+			SceneManager.LoadScene("Death Menu"); // If the player reaches 0 health, he gets send to the Death Menu
 		}
 	}
 

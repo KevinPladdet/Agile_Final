@@ -45,9 +45,7 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Healing item gets used
-                PlayerGotHealed = true;
-                Debug.Log("Player has been healed");
+                PlayerGotHealed = true; // Healing item gets used (Player heals 40 HP)
             }
         }
 
@@ -56,7 +54,8 @@ public class Inventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 // Player uses throwable
-                Debug.Log("Kunai has been thrown");
+                Debug.Log("Kunai has been thrown"); 
+                // The same person who is making the player / the attacks will make a kunai system and link it with this script
             }
         }
 

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Personal scenes/Kevin Scenes/MainMenu Scene.unity
     guid: 050333ae83ef4de4f98c1298f66c0756
+  - enabled: 1
+    path: Assets/Scenes/Personal scenes/Kevin Scenes/Death Menu.unity
+    guid: 1004571115792204bb08603d662baa57
+  - enabled: 1
+    path: Assets/Scenes/Personal scenes/Kevin Scenes/Win Menu.unity
+    guid: e1d8c69d394b33f438d42e7ef472897a
   m_configObjects: {}
