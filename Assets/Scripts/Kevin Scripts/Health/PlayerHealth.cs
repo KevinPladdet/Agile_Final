@@ -13,6 +13,12 @@ public class PlayerHealth : MonoBehaviour
 
 	public HealthBar healthBar;
 
+	private static AudioSource _audioSource;
+
+	private void Awake()
+	{
+		_audioSource = GetComponent<AudioSource>();
+	}
 
 	void Start()
 	{
@@ -24,7 +30,9 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			TakeDamage(20); // Each time the player gets hit he loses 20 health (The player can take 5 hits before dying)
+			_audioSource.Play();
+			TakeDamage(20); 
+			// Each time the player gets hit he loses 20 health (The player can take 5 hits before dying)
 			// Currently the player takes damage when spacebar is pressed, but the same person who makes the enemies will link this together
 		}
 

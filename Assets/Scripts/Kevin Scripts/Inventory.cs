@@ -13,12 +13,20 @@ public class Inventory : MonoBehaviour
     public GameObject HealingItem;
     public GameObject ThrowableItem;
 
+    private static AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if(HealingActive && DoneWaiting)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                _audioSource.Play();
                 HealingItem.SetActive(false);
                 ThrowableItem.SetActive(true);
                 Debug.Log("Switched from Healing to Throwable");
@@ -32,6 +40,7 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                _audioSource.Play();
                 HealingItem.SetActive(true);
                 ThrowableItem.SetActive(false);
                 Debug.Log("Switched from Throwable to Healing");
