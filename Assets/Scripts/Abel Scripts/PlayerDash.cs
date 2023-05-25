@@ -26,6 +26,7 @@ public class PlayerDash : MonoBehaviour
 
     [SerializeField] private ParticleSystem dashParticles;
     [SerializeField] private ParticleSystem speedParticles;
+    [SerializeField] private ParticleSystem cooldownParticles;
 
     void Update()
     {
@@ -95,6 +96,7 @@ public class PlayerDash : MonoBehaviour
             dashCooldownTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame(); // makes sure the while-loop runs at the same speed as Update.
         }
+        if (cooldownParticles != null) { cooldownParticles.Play(); }
         isAvailable = true;
     }
 }
