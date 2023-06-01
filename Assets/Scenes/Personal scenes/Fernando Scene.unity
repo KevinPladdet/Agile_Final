@@ -669,11 +669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1350624104}
-  comboTimer: 0
-  staminaMeter: 0
-  attackTimerSmall: 0
-  attackTimerBig: 0
-  direction: {x: 0, y: 0, z: 0}
 --- !u!135 &1265234240
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -963,8 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 1524058866}
-  health: 100
-  thrust: 2
+  health: 4
   direction: {x: 0, y: 0, z: 0}
 --- !u!4 &1435772981 stripped
 Transform:
