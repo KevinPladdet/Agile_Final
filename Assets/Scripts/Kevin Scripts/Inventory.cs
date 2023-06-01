@@ -15,6 +15,10 @@ public class Inventory : MonoBehaviour
 
     private static AudioSource _audioSource;
 
+    public AudioSource healingAudio;
+
+    public AudioSource kunaiAudio;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -54,6 +58,7 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                healingAudio.Play();
                 PlayerGotHealed = true; // Healing item gets used (Player heals 40 HP)
             }
         }
@@ -62,7 +67,7 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Player uses throwable
+                kunaiAudio.Play();
                 Debug.Log("Kunai has been thrown"); 
                 // The same person who is making the player / the attacks will make a kunai system and link it with this script
             }
