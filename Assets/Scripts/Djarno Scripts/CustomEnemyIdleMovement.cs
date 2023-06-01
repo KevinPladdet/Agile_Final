@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class CustomEnemyIdleMovement : MonoBehaviour
+namespace Pathfinding
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[UniqueComponent(tag = "ai.destination")]
+	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_a_i_destination_setter.php")]
+	public class AIDestinationSetter : VersionedMonoBehaviour
+	{
+		public Transform target;
+		IAstarAI ai;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		void OnEnable()
+		{
+			ai = GetComponent<IAstarAI>();
+			if (ai != null) ai.onSearchPath += Update;
+        }
+
+        void OnDisable()
+        {
+            if (ai != null) ai.onSearchPath -= Update;
+        }
+
+        void Update()
+		{
+			if (target != null && ai != null) ai.destination = target.position;
+		}
+	}
 }
+
