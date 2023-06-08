@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.I))
 		{
 			_audioSource.Play();
 			TakeDamage(20); 
@@ -36,11 +36,11 @@ public class PlayerHealth : MonoBehaviour
 			// Currently the player takes damage when spacebar is pressed, but the same person who makes the enemies will link this together
 		}
 
-		if ((GameObject.Find("Main Camera").GetComponent<Inventory>().PlayerGotHealed) && amountOfHealing >=1)
+		if ((GameObject.Find("MainCamera").GetComponent<Inventory>().PlayerGotHealed) && amountOfHealing >=1)
 		{
 			Heal();
 			amountOfHealing--; // This makes it so that the player can only heal 3 times
-			GameObject.Find("Main Camera").GetComponent<Inventory>().PlayerGotHealed = false;
+			GameObject.Find("MainCamera").GetComponent<Inventory>().PlayerGotHealed = false;
 		}
 
 		if (currentHealth == 0)
