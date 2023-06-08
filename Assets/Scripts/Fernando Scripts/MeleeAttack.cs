@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
@@ -8,103 +9,93 @@ public class MeleeAttack : MonoBehaviour
     public GameObject enemy;
     private bool onEnemy;
     //ComboSystem
-    public float comboTimer;
+    private float comboTimer = 1f;
 
-    public float staminaMeter = 100f;
+    private int comboStep = 1;
 
-    public float attackTimerSmall;
-    public float attackTimerBig;
+    private Vector3 direction;
 
-    private bool combo1 = true;
-    private bool combo2;
-    private bool combo3;
+    bool canAttack = true;
 
-    private bool attack1;
-    private bool attack2;
-
-
-    public Vector3 direction;
-    void Start()
+    private void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //combo sequence
-        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy == true && combo1 == true)
+        // Combo sequence
+        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 1 && canAttack == true)
         {
+            comboStep = 2;
             Debug.Log("1");
-            SmallAttack1();
-            attack1 = true;
-            combo1 = false;
-            combo2 = true;
-}
-        else if(Input.GetKeyDown(KeyCode.Mouse0) && onEnemy == true && combo2 == true)
-        {
-            Debug.Log("2");
-            SmallAttack2();
-            attack2 = true;
-            combo2 = false;
-            combo3 = true;
+            StartCoroutine(PerformComboStep(0.5f, SmallAttack1));
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy == true && combo3 == true)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 2 && canAttack == true)
         {
+            comboStep = 3;
+            Debug.Log("2");
+            StartCoroutine(PerformComboStep(0.5f, SmallAttack2));
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 3 && canAttack == true)
+        {
+            comboStep = 1;
             Debug.Log("3");
-            BigAttack();
-            combo1 = true;
-            combo2 = false;
-            combo3 = false;
-            attack1 = false;
-            attack2 = false;
+            StartCoroutine(PerformComboStep(1f, BigAttack));
         }
 
-        //ComboSystem
-        if(combo1 == true || combo2 == true || combo3 == true)
+        // ComboSystem
+        if (comboStep > 1)
         {
             comboTimer -= Time.deltaTime;
+            if (comboTimer <= 0)
+            {
+                comboTimer = 1;
+                comboStep = 1;
+            }
         }
-        if (comboTimer <= 0)
-        {
-            comboTimer = 0;
-            combo1 = true;
-            combo2 = false;
-            combo3 = false;
-            attack1 = false;
-            attack2 = false;
-        }
-        
     }
+
+    private IEnumerator PerformComboStep(float delay, System.Action attackAction)
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(delay);
+        attackAction.Invoke();
+        comboTimer = 1.5f;
+        canAttack = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //Check if enemy is in range
-        onEnemy = true;
-        direction = other.transform.position - transform.position;
-        //Debug.Log(onEnemy);
+        // Check if enemy is in range
+        if (other.gameObject == enemy)
+        {
+            onEnemy = true;
+            direction = other.transform.position - transform.position;
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        //Check if enemy is in range
-        onEnemy = false;
-        //Debug.Log(onEnemy);
+        // Check if enemy is out of range
+        if (other.gameObject == enemy)
+        {
+            onEnemy = false;
+        }
     }
-    void SmallAttack1()
+
+    private void SmallAttack1()
     {
         enemy.GetComponent<Damage>().TakeDamage();
-        comboTimer = 1;
     }
-    void SmallAttack2()
+
+    private void SmallAttack2()
     {
         enemy.GetComponent<Damage>().TakeDamage();
-        comboTimer = 1;
     }
-    void BigAttack()
+
+    private void BigAttack()
     {
         enemy.GetComponent<Damage>().TakeDamage2();
-    }
-    void SneakAttack()
-    {
-        
     }
 }
