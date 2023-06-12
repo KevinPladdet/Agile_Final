@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wall Ruins
+* source:	https://sketchfab.com/3d-models/wall-ruins-329b1417c00a44d6be74333dad864842
+* author:	CadmiumCoffee (https://sketchfab.com/bsishir)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wall Ruins" (https://sketchfab.com/3d-models/wall-ruins-329b1417c00a44d6be74333dad864842) by CadmiumCoffee (https://sketchfab.com/bsishir) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
