@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
+    [Header("Backstab")]
+
+    
+
+
+    [Header("Combo System")]
     public GameObject enemy;
     private bool onEnemy;
     //ComboSystem
@@ -43,7 +49,7 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("3");
             StartCoroutine(PerformComboStep(1f, BigAttack));
         }
-
+        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 1 && canAttack == true)
         // ComboSystem
         if (comboStep > 1)
         {
@@ -97,5 +103,9 @@ public class MeleeAttack : MonoBehaviour
     private void BigAttack()
     {
         enemy.GetComponent<Damage>().TakeDamage2();
+    }
+    private void BackStabCheck()
+    {
+
     }
 }
