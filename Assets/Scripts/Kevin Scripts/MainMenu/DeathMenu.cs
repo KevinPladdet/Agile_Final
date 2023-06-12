@@ -8,7 +8,7 @@ public class DeathMenu : MonoBehaviour
 
     public void TryAgain()
     {
-        SceneManager.LoadScene("InsertLevelNameHere");
+        SceneManager.LoadScene("TutorialLevel Kevin");
     }
 
     public void BackToMainMenu()
