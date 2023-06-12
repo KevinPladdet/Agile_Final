@@ -6,11 +6,10 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
+    public List<GameObject> Enemies;
     [Header("Backstab")]
-
+    public bool CanBackStab = false;
     
-
-
     [Header("Combo System")]
     public GameObject enemy;
     private bool onEnemy;
@@ -22,6 +21,8 @@ public class MeleeAttack : MonoBehaviour
     private Vector3 direction;
 
     bool canAttack = true;
+
+    public List<GameObject> Enemies;
 
     private void Start()
     {
@@ -49,7 +50,12 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("3");
             StartCoroutine(PerformComboStep(1f, BigAttack));
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 1 && canAttack == true)
+        if (Input.GetKeyDown(KeyCode.F) && onEnemy && comboStep == 1 && canAttack == true && CanBackStab == true)
+        {
+            comboStep = 1;
+            Debug.Log("BackStab");
+            StartCoroutine(PerformComboStep(1f, BackStab));
+        }
         // ComboSystem
         if (comboStep > 1)
         {
@@ -104,8 +110,16 @@ public class MeleeAttack : MonoBehaviour
     {
         enemy.GetComponent<Damage>().TakeDamage2();
     }
-    private void BackStabCheck()
+    private void BackStab()
     {
-
+        enemy.GetComponent<Damage>().BackStab();
+    }
+    public void BackStabSwitchOn()
+    {
+        CanBackStab = true;
+    }
+    public void BackStabSwitchOff()
+    {
+        CanBackStab = false;
     }
 }

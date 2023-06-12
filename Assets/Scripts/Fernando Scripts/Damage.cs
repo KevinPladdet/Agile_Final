@@ -26,8 +26,7 @@ public class Damage : MonoBehaviour
         //when 0 hp enemy dies
         if (health <= 0)
         {
-            await Task.Delay(1500);
-            Destroy(gameObject);
+            Destroy(gameObject, 1.5f);
         }
         //Debug.Log(hit);
     }
@@ -44,6 +43,11 @@ public class Damage : MonoBehaviour
         //Debug.Log("Damaged2");
         KnockBack(10);
         health -= 2;
+    }
+    public void BackStab()
+    {
+        KnockBack(0);
+        health = 0  ;
     }
     public void KnockBack(int thrust)
     {
