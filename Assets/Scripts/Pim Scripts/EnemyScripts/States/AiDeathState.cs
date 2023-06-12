@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 
 public class AiDeathState : AiState
 {
+    public RagdollToggle ragdoll;
+    public BoxCollider boxcollider;
+
     public AiStateId GetId()
     {
         return AiStateId.DeadState;
@@ -23,8 +27,12 @@ public class AiDeathState : AiState
 
     public void Update(AiAgent agent)
     {
+        ragdoll = agent.GetComponent<RagdollToggle>();
+        boxcollider = agent.GetComponent<BoxCollider>();
         //update
-        agent.transform.position = new Vector3(3, 3, 3);   //agent = the enemy     
+        ragdoll.SetKinematic(false);
+        boxcollider.enabled = false;
+        
     }
 
     public void OnTriggerEnter(AiAgent agent)

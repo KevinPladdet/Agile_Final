@@ -31,7 +31,7 @@ namespace Pathfinding
         {
             if (!reachedTarget)
             {
-                SetDestination(target);
+                SetDestination(target); 
             }
             else
             {

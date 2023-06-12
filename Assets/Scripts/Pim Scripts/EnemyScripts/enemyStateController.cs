@@ -9,7 +9,7 @@ public class enemyStateController
     public AiAgent agent;
 
     // The current state of the enemy
-    public AiStateId currentState;
+    public AiStateId currentState; 
 
     // Constructor that initializes the state array
     public enemyStateController(AiAgent agent)

@@ -6,7 +6,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class IdleState : AiState
 {
-    private DetectionPlayer detectionPlayer;
+    public DetectionPlayer detectionPlayer;
 
     public AiStateId GetId()
     {
@@ -14,11 +14,6 @@ public class IdleState : AiState
     }
     public void Enter(AiAgent agent)
     {
-        if (agent.GetComponent<DetectionPlayer>()!= null)
-        {
-            detectionPlayer = agent.GetComponent<DetectionPlayer>();
-        }
-        //start function(when ai enters the state)
     }
 
     public void Exit(AiAgent agent)
@@ -28,15 +23,25 @@ public class IdleState : AiState
 
     public void Update(AiAgent agent)
     {
-     if (detectionPlayer.seenPlayer == true)
+        if (detectionPlayer == null)
         {
-            AiDeathState deathState = agent.statemachine.GetState(AiStateId.DeadState) as AiDeathState;
-            agent.statemachine.ChangeState(AiStateId.DeadState);
+         detectionPlayer = agent.GetComponent<DetectionPlayer>();        //start function(when ai enters the state)
         }
+        if(detectionPlayer != null)
+        {
+            if (detectionPlayer.seenPlayer == true)
+            {
+                Debug.Log("switchToDead");
+                AiDeathState deathState = agent.statemachine.GetState(AiStateId.DeadState) as AiDeathState;
+                agent.statemachine.ChangeState(AiStateId.DeadState);
+            }
+        }
+       
     }
-
+    
     public void OnTriggerEnter(AiAgent agent)
     {
+
     }
 
     public void OnCollisionEnter(AiAgent agent)

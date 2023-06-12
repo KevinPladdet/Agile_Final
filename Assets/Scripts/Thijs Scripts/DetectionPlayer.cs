@@ -7,7 +7,7 @@ public class DetectionPlayer : MonoBehaviour
     Ray ray;
     private string LastHit;
     private float BeginTime;
-    public string LookingAt;
+    private string LookingAt;
     public float MaxDistance;
     public float TimeToDetection;
     public bool seenPlayer;
@@ -20,12 +20,11 @@ public class DetectionPlayer : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position,Vector3.forward, Color.green);
-        PlayerDetection();
-        Debug.Log("Looking at " + LookingAt);
-        if(LookingAt == "Player")
+        if (LookingAt == "Player")
         {
             seenPlayer = true;
         }
+        PlayerDetection();
 
     }
 
@@ -39,6 +38,7 @@ public class DetectionPlayer : MonoBehaviour
                 if((Time.time - BeginTime) > TimeToDetection)
                 {
                     LookingAt = hit.collider.gameObject.tag;
+                    Debug.Log(LookingAt);
                 }
             }
             else
