@@ -11,7 +11,7 @@ public class MeleeAttack : MonoBehaviour
     public bool CanBackStab = false;
     
     [Header("Combo System")]
-    public GameObject enemy;
+    private GameObject enemy;
     private bool onEnemy;
     //ComboSystem
     private float comboTimer = 1f;

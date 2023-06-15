@@ -34,24 +34,24 @@ public class Damage : MonoBehaviour
     public void TakeDamage()
     {
         //Debug.Log("Damaged");
-        KnockBack(5);
+        KnockBack(50000);
         health--;
         
     }
     public void TakeDamage2()
     {
         //Debug.Log("Damaged2");
-        KnockBack(10);
+        KnockBack(100000);
         health -= 2;
     }
     public void BackStab()
     {
-        KnockBack(0);
-        health = 0  ;
+        KnockBack(012000000);
+        health = 0;
     }
     public void KnockBack(int thrust)
     {
-        //Debug.Log("KnockBack");
+        Debug.Log("KnockBack");
         rb.velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
         direction = playerRB.transform.position - transform.position;

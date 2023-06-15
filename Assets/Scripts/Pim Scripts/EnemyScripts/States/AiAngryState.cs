@@ -12,6 +12,7 @@ public class AiAngryState : AiState
     public void Enter(AiAgent agent)
     {
         //start function(when ai enters the state)
+
     }
 
     public void Exit(AiAgent agent)

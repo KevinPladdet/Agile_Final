@@ -885,7 +885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d43fe46a3bcb7046bab519960b4464b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 0
 --- !u!114 &1350258943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +892,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350258938}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ee19613b019c624caaac89c7eb6584d, type: 3}
   m_Name: 
@@ -930,6 +929,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1350258952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350258938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cddb144d53f89418c390a12260718d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRB: {fileID: 4978876041793170874}
+  health: 10
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1667518366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6567524988083874780, guid: 02db33e37fbbd2b42bb9553dc3606a10,
@@ -1308,6 +1322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4978876040471142058, guid: a85b231d40b111447bacb87b5404924a,
         type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978876040471142058, guid: a85b231d40b111447bacb87b5404924a,
+        type: 3}
       propertyPath: sprintKey
       value: 304
       objectReference: {fileID: 0}
@@ -1418,8 +1437,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4978876040471142071, guid: a85b231d40b111447bacb87b5404924a,
         type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978876040471142071, guid: a85b231d40b111447bacb87b5404924a,
+        type: 3}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 4978876041555018763, guid: a85b231d40b111447bacb87b5404924a,
         type: 3}
@@ -1428,3 +1452,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85b231d40b111447bacb87b5404924a, type: 3}
+--- !u!54 &4978876041793170874 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4978876040471142071, guid: a85b231d40b111447bacb87b5404924a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4978876041793170873}
+  m_PrefabAsset: {fileID: 0}
