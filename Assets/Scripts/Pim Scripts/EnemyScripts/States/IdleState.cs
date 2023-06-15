@@ -43,6 +43,7 @@ public class IdleState : AiState
         }
         if(damage.health <= 0)
         {
+            IdleMovement.enabled = false;
             Debug.Log("SwitchToDead");
             AiDeathState deathState = agent.statemachine.GetState(AiStateId.DeadState) as AiDeathState;
             agent.statemachine.ChangeState(AiStateId.DeadState);
