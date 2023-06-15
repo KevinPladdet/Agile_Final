@@ -289,6 +289,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1340661064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1023519820
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1290350195}
+    m_Modifications:
+    - target: {fileID: 4250218278780799556, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_Name
+      value: Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 546d09e36d0a44c40abba2456158cfa0, type: 3}
 --- !u!198 &1099729476 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8456258169299253333, guid: dd068b0d3a069fc408cbb3eec4e9b04e,
@@ -695,6 +774,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ragdoll
       objectReference: {fileID: 0}
+    - target: {fileID: 1210661471965295659, guid: 7ad6585cf3d810649b83b07fcaa36db6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1983539443521187473, guid: 7ad6585cf3d810649b83b07fcaa36db6,
         type: 3}
       propertyPath: m_RootOrder
@@ -795,7 +879,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350258938}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82434201406aba5479a667bb489c05b8, type: 3}
   m_Name: 
@@ -837,7 +921,7 @@ MonoBehaviour:
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 360
+  rotationSpeed: 5
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
   endReachedDistance: 0.2
@@ -927,7 +1011,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!114 &1350258952
 MonoBehaviour:
@@ -942,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 4978876041793170874}
-  health: 10
+  health: 5
   direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1667518366 stripped
 GameObject:

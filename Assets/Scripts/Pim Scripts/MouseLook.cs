@@ -23,7 +23,7 @@ public class MouseLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         currentX += Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
         currentY += Input.GetAxis("Mouse Y") * -sensivity * Time.deltaTime;
@@ -37,6 +37,5 @@ public class MouseLook : MonoBehaviour
         transform.LookAt(lookAt.position);
 
         Player.rotation = Quaternion.Euler(0, currentX, 0);
-
     }
 }
