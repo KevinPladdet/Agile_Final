@@ -26,35 +26,37 @@ public class MeleeAttack : MonoBehaviour
 
     private AttackType currentAttack = AttackType.None;
 
+    public SphereCollider meleeHitBox;
+
     //public List<GameObject> Enemies;
 
     private void Start()
     {
-
+        meleeHitBox.enabled = false;
     }
 
     private void Update()
     {
         // Combo sequence
-        if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 1 && canAttack == true)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && comboStep == 1 && canAttack == true)
         {
             comboStep = 2;
             Debug.Log("1");
-            StartCoroutine(PerformComboStep(0.5f, SmallAttack1, AttackType.Small));
+            StartCoroutine(PerformComboStep(1f, SmallAttack1, AttackType.Small));
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 2 && canAttack == true)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && comboStep == 2 && canAttack == true)
         {
             comboStep = 3;
             Debug.Log("2");
-            StartCoroutine(PerformComboStep(0.5f, SmallAttack2, AttackType.Small2));
+            StartCoroutine(PerformComboStep(2f, SmallAttack2, AttackType.Small2));
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && onEnemy && comboStep == 3 && canAttack == true)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && comboStep == 3 && canAttack == true)
         {
             comboStep = 1;
             Debug.Log("3");
-            StartCoroutine(PerformComboStep(1f, BigAttack, AttackType.Big));
+            StartCoroutine(PerformComboStep(2f, BigAttack, AttackType.Big));
         }
-        if (Input.GetKeyDown(KeyCode.F) && onEnemy && comboStep == 1 && canAttack == true && CanBackStab == true)
+        if (Input.GetKeyDown(KeyCode.F) && comboStep == 1 && canAttack == true && CanBackStab == true)
         {
             comboStep = 1;
             Debug.Log("BackStab");
@@ -66,7 +68,7 @@ public class MeleeAttack : MonoBehaviour
             comboTimer -= Time.deltaTime;
             if (comboTimer <= 0)
             {
-                comboTimer = 1;
+                comboTimer = 3;
                 comboStep = 1;
             }
         }
@@ -74,18 +76,20 @@ public class MeleeAttack : MonoBehaviour
 
     private IEnumerator PerformComboStep(float delay, System.Action attackAction, AttackType preformedAttack)
     {
+        meleeHitBox.enabled = true;
         currentAttack = preformedAttack;
         canAttack = false;
         yield return new WaitForSeconds(delay);
         //attackAction.Invoke();
-        comboTimer = 1.5f;
+        comboTimer = 3f;
         canAttack = true;
         currentAttack = AttackType.None;
+        meleeHitBox.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.GetComponent<Damage>() != null)
         {
             onEnemy = true;
             direction = other.transform.position - transform.position;
@@ -95,7 +99,7 @@ public class MeleeAttack : MonoBehaviour
                 case AttackType.None:
                     break;
                 case AttackType.Small:
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
                     other.gameObject.GetComponent<Damage>().TakeDamage();
                     break;
                 case AttackType.Small2:
@@ -110,8 +114,9 @@ public class MeleeAttack : MonoBehaviour
                 default:
                     break;
             }
+            meleeHitBox.enabled = false;
         }
-        
+
     }
 
     private void OnTriggerExit(Collider other)

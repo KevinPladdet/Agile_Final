@@ -1104,12 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBackStab: 0
   enemy: {fileID: 1350624104}
-  Enemies:
-  - {fileID: 1350624104}
-  - {fileID: 1537992176}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  meleeHitBox: {fileID: 1265234240}
 --- !u!135 &1265234240
 SphereCollider:
   m_ObjectHideFlags: 0

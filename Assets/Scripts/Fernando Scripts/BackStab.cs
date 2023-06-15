@@ -23,7 +23,7 @@ public class BackStab : MonoBehaviour
     {
         if (other.gameObject == Player)
         {
-            Debug.Log("Yes");
+            //Debug.Log("Yes");
             Player.GetComponentInChildren<MeleeAttack>().BackStabSwitchOn();
         }   
     }
@@ -31,7 +31,7 @@ public class BackStab : MonoBehaviour
     {
         if (other.gameObject == Player)
         {
-            Debug.Log("no");
+            //Debug.Log("no");
             Player.GetComponentInChildren<MeleeAttack>().BackStabSwitchOff();
         }
     }
