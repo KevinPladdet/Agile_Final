@@ -34,19 +34,19 @@ public class Damage : MonoBehaviour
     public void TakeDamage()
     {
         //Debug.Log("Damaged");
-        KnockBack(50000);
+        KnockBack(5);
         health--;
         
     }
     public void TakeDamage2()
     {
         //Debug.Log("Damaged2");
-        KnockBack(100000);
+        KnockBack(10);
         health -= 2;
     }
     public void BackStab()
     {
-        KnockBack(012000000);
+        KnockBack(0);
         health = 0;
     }
     public void KnockBack(int thrust)

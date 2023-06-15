@@ -144,6 +144,7 @@ public class MeleeAttack : MonoBehaviour
     }
     private void BackStab()
     {
+        Debug.Log("BackStab");
         enemy.GetComponent<Damage>().BackStab();
     }
     public void BackStabSwitchOn()
