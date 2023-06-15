@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AiAngryState : AiState
 {
-    public float hp = 1;
     public AiStateId GetId()
     {
         return AiStateId.AngryState;
@@ -22,26 +21,14 @@ public class AiAngryState : AiState
 
     public void Update(AiAgent agent)
     {
-        //code that ai does each frame in this state here
-        if(hp <= 0)
-        {
-            die(agent);
-        }
 
     }
     public void OnTriggerEnter(AiAgent agent)
     {
-        Debug.Log("Trigger");
-        hp -= 1;
-    }
-    void die(AiAgent agent)
-    {
-        AiDeathState deathState = agent.statemachine.GetState(AiStateId.DeadState) as AiDeathState;
-        agent.statemachine.ChangeState(AiStateId.DeadState);
+
     }
 
     public void OnCollisionEnter(AiAgent agent)
     {
-        Debug.Log("Collision");
     }
 }

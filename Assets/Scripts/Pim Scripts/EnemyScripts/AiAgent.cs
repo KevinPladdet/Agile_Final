@@ -5,12 +5,10 @@ using UnityEngine;
 public class AiAgent : MonoBehaviour
 {
     public enemyStateController statemachine;
-    public AiStateId initialState;
     // Start is called before the first frame update
     void Start()
     {
         statemachine = new enemyStateController(this);
-        statemachine.ChangeState(initialState);
 
         statemachine.RegisterState(new IdleState());
 
@@ -19,6 +17,8 @@ public class AiAgent : MonoBehaviour
         statemachine.RegisterState(new AiAngryState());
 
         statemachine.RegisterState(new AiDeathState());
+
+        statemachine.CurrentState = AiStateId.IdleState;
     }
 
     // Update is called once per frame

@@ -9,7 +9,17 @@ public class enemyStateController
     public AiAgent agent;
 
     // The current state of the enemy
-    public AiStateId currentState; 
+    private AiStateId currentState;
+
+    public AiStateId CurrentState
+    {
+        get { return currentState; }
+        set 
+        { 
+            currentState = value;
+            GetState(CurrentState)?.Enter(agent);
+        }
+    }
 
     // Constructor that initializes the state array
     public enemyStateController(AiAgent agent)
@@ -45,35 +55,34 @@ public class enemyStateController
     public void Update()
     {
         // Get the current state from the array and call its Update method, passing in the agent
-        GetState(currentState)?.Update(agent);
+        GetState(CurrentState)?.Update(agent);
     }
-
     // Method to change the current state
     public void ChangeState(AiStateId newState)
     {
         Debug.Log("enemyStateController: Changing state to " + newState);
 
         // Call the Exit method of the current state, if there is one
-        GetState(currentState)?.Exit(agent);
+        GetState(CurrentState)?.Exit(agent);
 
         // Set the new state as the current state
-        currentState = newState;
+        CurrentState = newState;
 
         // Call the Enter method of the new state, if there is one
-        GetState(currentState)?.Enter(agent);
+        GetState(CurrentState)?.Enter(agent);
     }
 
     // Method called when the enemy collides with a non-trigger collider
     public void OnCollisionEnter(Collision collision)
     {
         // Call the OnCollisionEnter method of the current state, passing in the agent
-        GetState(currentState)?.OnCollisionEnter(agent);
+        GetState(CurrentState)?.OnCollisionEnter(agent);
     }
 
     //Method called when the enemy collides with a collider
     public void OnTriggerEnter(Collider other)
     {
-        GetState(currentState)?.OnTriggerEnter(agent);
+        GetState(CurrentState)?.OnTriggerEnter(agent);
     }
 }
 // i used chat gtp to comment this because i forgor

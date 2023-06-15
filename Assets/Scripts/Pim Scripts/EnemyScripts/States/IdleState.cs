@@ -14,6 +14,10 @@ public class IdleState : AiState
     }
     public void Enter(AiAgent agent)
     {
+        if (detectionPlayer == null)
+        {
+            detectionPlayer = agent.GetComponent<DetectionPlayer>();        //start function(when ai enters the state)
+        }
     }
 
     public void Exit(AiAgent agent)
@@ -23,10 +27,7 @@ public class IdleState : AiState
 
     public void Update(AiAgent agent)
     {
-        if (detectionPlayer == null)
-        {
-         detectionPlayer = agent.GetComponent<DetectionPlayer>();        //start function(when ai enters the state)
-        }
+
         if(detectionPlayer != null)
         {
             if (detectionPlayer.seenPlayer == true)
@@ -46,5 +47,6 @@ public class IdleState : AiState
 
     public void OnCollisionEnter(AiAgent agent)
     {
+
     }
 }
