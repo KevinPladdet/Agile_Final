@@ -1671,6 +1671,11 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1350624104}
+    - target: {fileID: 4250218278780799558, guid: 546d09e36d0a44c40abba2456158cfa0,
+        type: 3}
+      propertyPath: CanBackStab
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4250218278780799559, guid: 546d09e36d0a44c40abba2456158cfa0,
         type: 3}
       propertyPath: m_RootOrder
