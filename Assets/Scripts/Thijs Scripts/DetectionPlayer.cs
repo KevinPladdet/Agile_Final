@@ -15,10 +15,11 @@ public class DetectionPlayer : MonoBehaviour
 
     void Start()
     {
-        ray = new Ray(transform.position, transform.forward);
+
     }
     void Update()
     {
+        ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position,Vector3.forward, Color.green);
         if (LookingAt == "Player")
         {

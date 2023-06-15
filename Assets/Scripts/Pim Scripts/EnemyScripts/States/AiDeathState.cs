@@ -16,7 +16,10 @@ public class AiDeathState : AiState
     }
     public void Enter(AiAgent agent)
     {
-      //start
+        ragdoll = agent.GetComponent<RagdollToggle>();
+        boxcollider = agent.GetComponent<BoxCollider>();
+        ragdoll.SetKinematic(false);
+        boxcollider.enabled = false;
     }
 
     public void Exit(AiAgent agent)
@@ -27,12 +30,8 @@ public class AiDeathState : AiState
 
     public void Update(AiAgent agent)
     {
-        ragdoll = agent.GetComponent<RagdollToggle>();
-        boxcollider = agent.GetComponent<BoxCollider>();
+
         //update
-        ragdoll.SetKinematic(false);
-        boxcollider.enabled = false;
-        
     }
 
     public void OnTriggerEnter(AiAgent agent)
