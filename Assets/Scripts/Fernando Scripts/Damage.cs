@@ -53,7 +53,6 @@ public class Damage : MonoBehaviour
     {
         Debug.Log("KnockBack");
         rb.velocity = Vector3.zero;
-        rb.velocity = Vector3.zero;
         direction = playerRB.transform.position - transform.position;
         rb.AddForce(direction.normalized * -thrust, ForceMode.Impulse);
     }
