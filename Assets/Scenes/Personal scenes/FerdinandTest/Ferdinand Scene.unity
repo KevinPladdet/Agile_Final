@@ -10105,6 +10105,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPackageAni
       objectReference: {fileID: 0}
+    - target: {fileID: 1504844991148511547, guid: 555205c14520320468b684ada2129744,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8070532551971395769, guid: 555205c14520320468b684ada2129744,
         type: 3}
       propertyPath: m_RootOrder
