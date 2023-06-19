@@ -11,7 +11,7 @@ public class EnemyRemember : MonoBehaviour
     public float maxDistance;
     public float timeToDetection;
     public bool forgor;
-    private float lastPlayerSeenTime;
+    [HideInInspector] public float lastPlayerSeenTime;
 
     void Update()
     {
@@ -19,8 +19,9 @@ public class EnemyRemember : MonoBehaviour
         Debug.DrawRay(transform.position, Vector3.forward, Color.green);
         if (lookingAt == "Player")
         {
-            forgor = true;
+            lookingAt = "";
             lastPlayerSeenTime = Time.time;
+            forgor = true;
         }
         else
         {

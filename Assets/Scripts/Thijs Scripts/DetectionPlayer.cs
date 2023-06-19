@@ -23,6 +23,7 @@ public class DetectionPlayer : MonoBehaviour
         Debug.DrawRay(transform.position,Vector3.forward, Color.green);
         if (LookingAt == "Player")
         {
+            LookingAt = "";
             seenPlayer = true;
         }
         PlayerDetection();

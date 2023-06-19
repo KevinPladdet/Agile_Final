@@ -23,12 +23,14 @@ public class IdleState : AiState
             IdleMovement = agent.GetComponent<CustomEnemyIdleMovement>();
             damage = agent.GetComponent<Damage>();
             IdleMovement.enabled = true;
+            detectionPlayer.enabled = true;
         }
     }
 
     public void Exit(AiAgent agent)
     {
         IdleMovement.enabled = false;
+        detectionPlayer.enabled = false;
         //gets executed when ai leaves this state
     }
 
