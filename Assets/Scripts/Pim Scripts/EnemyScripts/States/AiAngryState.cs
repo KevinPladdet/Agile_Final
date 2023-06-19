@@ -12,6 +12,7 @@ public class AiAngryState : AiState
     private AIDestinationSetter follow;
     private AIPath aipath;
     private EnemyRemember enemyRemember;
+    private EnemyAttack enemyAttack;
 
     public AiStateId GetId()
     {
@@ -23,8 +24,11 @@ public class AiAngryState : AiState
         damage = agent.GetComponent<Damage>();
         aipath = agent.GetComponent<AIPath>();
         enemyRemember = agent.GetComponent<EnemyRemember>();
+        enemyAttack = agent.GetComponent<EnemyAttack>();
         follow.enabled = true; 
         enemyRemember.enabled = true;
+        enemyAttack.enabled = true;
+        
         aipath.maxSpeed = 5; 
         //start function(when ai enters the state)
 
@@ -35,6 +39,7 @@ public class AiAngryState : AiState
         //gets executed when ai leaves this state
         follow.enabled = false;
         enemyRemember.enabled = false;
+        enemyAttack.enabled = false;
     }
 
     public void Update(AiAgent agent)

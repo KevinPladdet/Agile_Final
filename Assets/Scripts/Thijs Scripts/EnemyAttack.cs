@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public GameObject player;
     float distance;
-    float lastAttack = Time.time;
+    float lastAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,7 @@ public class EnemyAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().currentHealth -= 10;
             lastAttack = Time.time;
+            Debug.Log("Attack");
         }
     }
 }
