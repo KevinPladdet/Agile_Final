@@ -15,9 +15,16 @@ public class enemyStateController
     {
         get { return currentState; }
         set 
-        { 
+        {
+            bool dontdoextiinstart = true;
+            if (!dontdoextiinstart)
+            {
+                GetState(CurrentState)?.Exit(agent);
+            }
+            //GetState(currentState)?.Exit(agent);
             currentState = value;
             GetState(CurrentState)?.Enter(agent);
+            dontdoextiinstart = false;
         }
     }
 

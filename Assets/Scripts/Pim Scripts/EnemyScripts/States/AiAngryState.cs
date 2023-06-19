@@ -11,6 +11,8 @@ public class AiAngryState : AiState
     private Damage damage;
     private AIDestinationSetter follow;
     private AIPath aipath;
+    private EnemyRemember enemyRemember;
+
     public AiStateId GetId()
     {
         return AiStateId.AngryState;
@@ -20,7 +22,9 @@ public class AiAngryState : AiState
         follow = agent.GetComponent<AIDestinationSetter>();
         damage = agent.GetComponent<Damage>();
         aipath = agent.GetComponent<AIPath>();
-        follow.enabled = true;
+        enemyRemember = agent.GetComponent<EnemyRemember>();
+        follow.enabled = true; 
+        enemyRemember.enabled = true;
         aipath.maxSpeed = 5; 
         //start function(when ai enters the state)
 
@@ -29,6 +33,8 @@ public class AiAngryState : AiState
     public void Exit(AiAgent agent)
     {
         //gets executed when ai leaves this state
+        follow.enabled = false;
+        enemyRemember.enabled = false;
     }
 
     public void Update(AiAgent agent)
@@ -38,6 +44,12 @@ public class AiAngryState : AiState
             Debug.Log("SwitchToDead");
             AiDeathState deathState = agent.statemachine.GetState(AiStateId.DeadState) as AiDeathState;
             agent.statemachine.ChangeState(AiStateId.DeadState);
+        }
+        if(enemyRemember.forgor == true)
+        {
+            Debug.Log("switchToIdle");
+            IdleState idlestate = agent.statemachine.GetState(AiStateId.IdleState) as IdleState;
+            agent.statemachine.ChangeState(AiStateId.IdleState);
         }
     }
     public void OnTriggerEnter(AiAgent agent)
