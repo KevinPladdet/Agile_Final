@@ -56,7 +56,7 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("3");
             StartCoroutine(PerformComboStep(2f, BigAttack, AttackType.Big));
         }
-        if (Input.GetKeyDown(KeyCode.F) && comboStep == 1 && canAttack == true && CanBackStab == true)
+        if (Input.GetKeyDown(KeyCode.F) && comboStep == 1 && CanBackStab == true)
         {
             comboStep = 1;
             Debug.Log("BackStab");
