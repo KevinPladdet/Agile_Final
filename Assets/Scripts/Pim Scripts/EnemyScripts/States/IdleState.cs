@@ -20,15 +20,17 @@ public class IdleState : AiState
         if (detectionPlayer == null)
         {
             detectionPlayer = agent.GetComponent<DetectionPlayer>();        //start function(when ai enters the state)
+            IdleMovement = agent.GetComponent<CustomEnemyIdleMovement>();
+            damage = agent.GetComponent<Damage>();
+            IdleMovement.enabled = true;
+            detectionPlayer.enabled = true;
         }
-    
-        IdleMovement = agent.GetComponent<CustomEnemyIdleMovement>();
-        damage = agent.GetComponent<Damage>();
-        IdleMovement.enabled = true;
     }
 
     public void Exit(AiAgent agent)
     {
+        IdleMovement.enabled = false;
+        detectionPlayer.enabled = false;
         //gets executed when ai leaves this state
     }
 
