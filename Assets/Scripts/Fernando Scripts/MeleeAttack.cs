@@ -56,7 +56,7 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("3");
             StartCoroutine(PerformComboStep(2f, BigAttack, AttackType.Big));
         }
-        if (Input.GetKeyDown(KeyCode.F) && comboStep == 1 && canAttack == true && CanBackStab == true)
+        if (Input.GetKeyDown(KeyCode.F) && comboStep == 1 && CanBackStab == true)
         {
             comboStep = 1;
             Debug.Log("BackStab");
@@ -72,6 +72,7 @@ public class MeleeAttack : MonoBehaviour
                 comboStep = 1;
             }
         }
+        
     }
 
     private IEnumerator PerformComboStep(float delay, System.Action attackAction, AttackType preformedAttack)
@@ -130,22 +131,22 @@ public class MeleeAttack : MonoBehaviour
 
     private void SmallAttack1()
     {
-        enemy.GetComponent<Damage>().TakeDamage();
+        //enemy.GetComponent<Damage>().TakeDamage();
     }
 
     private void SmallAttack2()
     {
-        enemy.GetComponent<Damage>().TakeDamage();
+        //enemy.GetComponent<Damage>().TakeDamage();
     }
 
     private void BigAttack()
     {
-        enemy.GetComponent<Damage>().TakeDamage2();
+        //enemy.GetComponent<Damage>().TakeDamage2();
     }
     private void BackStab()
     {
-        Debug.Log("BackStab");
-        enemy.GetComponent<Damage>().BackStab();
+        //Debug.Log("BackStab");
+        //enemy.GetComponent<Damage>().BackStab();
     }
     public void BackStabSwitchOn()
     {
